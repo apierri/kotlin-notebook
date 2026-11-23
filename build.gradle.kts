@@ -34,27 +34,13 @@ subprojects {
     }
 }
 
-// Shared repository and resolution configuration for all projects
 allprojects {
-    val intellijPlatformVersion = providers.gradleProperty("intellijPlatformVersion")
-    configurations.all {
-        resolutionStrategy {
-            // Nightly builds only publish 262-SNAPSHOT, not exact build numbers like 262.3925.
-            // Force these to resolve from the nightly repo using the snapshot coordinates.
-            force(
-                "com.jetbrains.intellij.platform:test-framework:${intellijPlatformVersion.get()}",
-                "com.jetbrains.intellij.platform:test-framework-junit5:${intellijPlatformVersion.get()}",
-            )
-        }
-    }
     repositories {
         mavenCentral()
         maven("https://packages.jetbrains.team/maven/p/kds/kotlin-ds-maven")
         maven("https://cache-redirector.jetbrains.com/packages.jetbrains.team/maven/p/ij/intellij-dependencies")
         intellijPlatform {
             defaultRepositories()
-            // Nightly snapshots for branch 262
-            nightly()
         }
     }
 
@@ -82,9 +68,7 @@ allprojects {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaUltimate(providers.gradleProperty("intellijPlatformVersion")) {
-            useInstaller = false
-        }
+        intellijIdea(providers.gradleProperty("intellijPlatformVersion"))
 
         // Plugin dependencies – these become binary deps in the standalone repository
         bundledPlugin("org.jetbrains.kotlin")
@@ -122,6 +106,10 @@ intellijPlatform {
 
     pluginConfiguration {
         version = providers.gradleProperty("pluginVersion")
+        ideaVersion {
+            sinceBuild = "263.7307"
+            untilBuild = "263.*"
+        }
     }
 
     pluginVerification {

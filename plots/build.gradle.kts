@@ -19,8 +19,7 @@ dependencies {
         // jupyter/core, jupyter/psi, jupyter/execution
         plugin(libs.plugins.nonBundledIntellij.jupyter.map { it.toString() })
         plugin(libs.plugins.nonBundledIntellij.notebooksCore.map { it.toString() })
-        // intellij.charts platform module
-        bundledModule("intellij.charts")
+        bundledModule("intellij.charts.shared")
     }
 
     implementation(projects.core)

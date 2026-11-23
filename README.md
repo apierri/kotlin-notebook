@@ -19,11 +19,8 @@ product and will no longer maintain or support the plugin. The plugin remains
 available under an open-source model so the community can continue its
 development. More details in the [blog post](https://blog.jetbrains.com/idea/2026/06/kotlin-notebook-sunset).
 
-The source in this repository reflects the latest state of the plugin. However, for technical
-reasons, the repository is not fully self-contained right now: building the plugin and running
-the tests may not work out of the box after cloning. We're working on making this a fully
-buildable, runnable project. It will take some time, and this README will be updated once
-that's done.
+This fork targets IntelliJ IDEA 2026.3 (build 263). Gradle downloads the IDE and its
+Jupyter dependencies for sandbox runs.
 
 ## Features
 
@@ -63,16 +60,18 @@ feature area and is packaged as a separate JAR inside the plugin distribution:
 
 ### Prerequisites
 
-- JDK 21
+- JDK 25
 - Git
 
-### Build from source
+### Build the plugin distribution
 
 ```sh
-./gradlew build
+./gradlew buildPlugin
 ```
 
-### Run the plugin in a sandboxed IDE
+Gradle writes the installable ZIP to `build/distributions/`.
+
+### Run the plugin in a sandboxed IntelliJ IDEA 2026.3 (263)
 
 ```sh
 ./gradlew runIde

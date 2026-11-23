@@ -4,9 +4,9 @@ package com.intellij.kotlin.jupyter.k2.scriptingSupport
 import com.intellij.kotlin.jupyter.core.util.getTopLevelFileOrNull
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptEntity
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptEntityProvider
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptEntityProvider.Companion.findKotlinScriptEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptEntityProvider
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptEntityProvider.Companion.findKotlinScriptEntity
 
 /**
  * Notebook-specific lookup: resolves cell virtual files to the top-level `.ipynb` file

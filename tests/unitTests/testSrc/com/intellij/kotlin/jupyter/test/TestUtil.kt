@@ -23,7 +23,6 @@ import com.intellij.notebooks.visualization.NotebookCellLines
 import com.intellij.notebooks.visualization.NotebookIntervalPointerFactory
 import com.intellij.notebooks.visualization.outputs.NotebookOutputComponentFactory
 import com.intellij.openapi.Disposable
-import com.intellij.openapi.application.PathManager
 import com.intellij.openapi.application.runReadActionBlocking
 import com.intellij.openapi.application.runWriteAction
 import com.intellij.openapi.diagnostic.logger
@@ -38,6 +37,7 @@ import com.intellij.psi.util.descendantsOfType
 import com.intellij.testFramework.HeavyTestHelper
 import com.intellij.testFramework.IndexingTestUtil
 import com.intellij.testFramework.fixtures.CodeInsightTestFixture
+import com.intellij.testFramework.fixtures.IdeaTestExecutionPolicy
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
@@ -50,7 +50,23 @@ import org.jetbrains.plugins.notebooks.psi.jupyter.psi.JupyterPsiCell
 import java.nio.file.Path
 import kotlin.time.Duration.Companion.minutes
 
-val baseTestDataPathWithHome = PathManager.getHomePath() + "/plugins/kotlin/jupyter/tests/unitTests/testData"
+// CodeInsightFixtureTestCase resolves getBasePath() relative to the test policy's home.
+internal class NotebookTestExecutionPolicy : IdeaTestExecutionPolicy() {
+    override fun getName(): String = "Kotlin Notebook"
+    override fun getHomePath(): String = System.getProperty("kotlin.notebook.testProjectRoot")
+}
+
+private val testModulePath: String
+    get() = if (IdeaTestExecutionPolicy.current() is NotebookTestExecutionPolicy) "/tests/unitTests"
+            else "/plugins/kotlin/jupyter/tests/unitTests"
+
+val baseTestDataPathWithHome: String
+    get() = IdeaTestExecutionPolicy.getHomePathWithPolicy() + testModulePath + "/testData"
+
+internal fun notebookTestBasePath(dataPath: String?, metadataPath: String?): String =
+    listOfNotNull(dataPath, metadataPath).joinToString("/")
+        .replace($$"$CONTENT_ROOT", testModulePath)
+        .replace($$"$PROJECT_ROOT", "")
 
 val CodeInsightTestFixture.kotlinNotebookFile: BackedNotebookVirtualFile?
     get() {

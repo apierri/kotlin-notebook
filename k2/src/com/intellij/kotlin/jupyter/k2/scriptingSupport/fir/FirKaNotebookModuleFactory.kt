@@ -16,8 +16,8 @@ import org.jetbrains.kotlin.base.fir.scripting.projectStructure.modules.KaScript
 import org.jetbrains.kotlin.idea.base.fir.projectStructure.FirKaModuleFactory
 import org.jetbrains.kotlin.idea.base.projectStructure.ideProjectStructureProvider
 import org.jetbrains.kotlin.idea.base.projectStructure.toKaLibraryModule
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptEntity
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptLibraryEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptLibraryEntity
 import org.jetbrains.kotlin.psi.KtFile
 
 /**

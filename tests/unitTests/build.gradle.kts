@@ -21,8 +21,14 @@ sourceSets {
     }
 }
 
+tasks.test {
+    systemProperty("idea.test.execution.policy", "com.intellij.kotlin.jupyter.test.NotebookTestExecutionPolicy")
+    systemProperty("kotlin.notebook.testProjectRoot", rootProject.layout.projectDirectory.asFile.absolutePath)
+}
+
 dependencies {
     intellijPlatform {
+        testLocalPlugin(project(":"))
         bundledPlugin("org.jetbrains.kotlin")
         bundledPlugin("com.intellij.java")
         plugin(libs.plugins.nonBundledIntellij.jupyter.map { it.toString() })

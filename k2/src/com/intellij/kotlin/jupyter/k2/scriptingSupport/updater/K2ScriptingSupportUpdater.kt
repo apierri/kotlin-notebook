@@ -29,9 +29,9 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import org.jetbrains.kotlin.idea.core.script.k2.asCompilationConfiguration
-import org.jetbrains.kotlin.idea.core.script.k2.definitions.ScriptDefinitionProviderImpl
-import org.jetbrains.kotlin.idea.core.script.k2.definitions.ScriptDefinitionsModificationTracker
+import org.jetbrains.kotlin.idea.core.script.asCompilationConfiguration
+import org.jetbrains.kotlin.idea.core.script.definitions.ScriptDefinitionProviderImpl
+import org.jetbrains.kotlin.idea.core.script.definitions.ScriptDefinitionsModificationTracker
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.scripting.resolve.ScriptCompilationConfigurationWrapper
 import org.jetbrains.kotlin.scripting.resolve.VirtualFileScriptSource

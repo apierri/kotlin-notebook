@@ -4,7 +4,7 @@ package com.intellij.kotlin.jupyter.k2.scriptingSupport.definition
 import com.intellij.kotlin.jupyter.core.scriptingSupport.definitions.KotlinNotebookScriptDefinitionsWrapper
 import com.intellij.kotlin.jupyter.k2.scriptingSupport.fir.refineNotebookWithSelectedBundledCompilerPlugins
 import com.intellij.openapi.project.Project
-import org.jetbrains.kotlin.idea.core.script.k2.definitions.ScriptDefinitionsModificationTracker
+import org.jetbrains.kotlin.idea.core.script.definitions.ScriptDefinitionsModificationTracker
 import org.jetbrains.kotlin.scripting.resolve.VirtualFileScriptSource
 import kotlin.script.experimental.api.SourceCode
 import kotlin.script.experimental.api.with

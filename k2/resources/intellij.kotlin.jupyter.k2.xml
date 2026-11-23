@@ -2,7 +2,7 @@
 
     <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
     <dependencies>
-      <plugin id="com.intellij.modules.kotlin.k2"/>
+      <plugin id="org.jetbrains.kotlin"/>
       <module name="intellij.java.frontback.psi.impl"/>
       <module name="intellij.java.psi"/>
       <module name="intellij.jupyter.core"/>

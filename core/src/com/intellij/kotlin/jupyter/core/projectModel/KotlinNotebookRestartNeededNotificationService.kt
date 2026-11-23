@@ -86,7 +86,7 @@ class KotlinNotebookRestartNeededNotificationService(
         if (!showHints) return
 
         val selectedEditor = FileEditorManager.getInstance(project)
-            .getSelectedEditors()
+            .selectedEditors
             .asSequence()
             .filterIsInstance<JupyterFileEditor>()
             .firstOrNull { it.file.isKotlinNotebook && it.file == notebook.virtualFile }

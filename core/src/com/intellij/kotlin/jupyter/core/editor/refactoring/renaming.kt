@@ -50,6 +50,7 @@ import com.intellij.util.runIf
 import org.jetbrains.kotlin.analysis.decompiler.psi.file.KtClsFile
 import org.jetbrains.kotlin.asJava.namedUnwrappedElement
 import org.jetbrains.kotlin.idea.refactoring.rename.RenameKotlinPropertyProcessor
+import org.jetbrains.kotlin.idea.references.mainReference
 import org.jetbrains.kotlin.psi.KtBlockExpression
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtFile
@@ -204,7 +205,7 @@ class KotlinNotebookPropertiesRenameHandler : MemberInplaceRenameHandler() {
             retrieveElementUnderCaret(psiFile) ?: return false
 
         val resolvedElement = when (val parent = psiElement.parent) {
-            is KtReferenceExpression -> parent.reference?.resolve()
+            is KtReferenceExpression -> parent.mainReference.resolve()
             else -> psiElement
         } ?: return false
 

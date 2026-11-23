@@ -14,8 +14,8 @@ import com.intellij.platform.workspace.storage.url.VirtualFileUrl
 import com.intellij.platform.workspace.storage.url.VirtualFileUrlManager
 import com.intellij.psi.search.GlobalSearchScopesCore
 import com.intellij.util.concurrency.annotations.RequiresReadLock
-import org.jetbrains.kotlin.idea.core.script.k2.asCompilationConfiguration
-import org.jetbrains.kotlin.idea.core.script.k2.configurations.toVirtualFileUrl
+import org.jetbrains.kotlin.idea.core.script.asCompilationConfiguration
+import org.jetbrains.kotlin.idea.core.script.configurations.toVirtualFileUrl
 import org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex
 import kotlin.script.experimental.api.KotlinType
 import kotlin.script.experimental.api.ScriptCompilationConfiguration

@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.base.fir.scripting.projectStructure.modules.KaScript
 import org.jetbrains.kotlin.idea.KotlinFileType
 import org.jetbrains.kotlin.idea.base.fir.projectStructure.modules.library.KaEntityBasedLibraryModuleBase
 import org.jetbrains.kotlin.idea.base.fir.projectStructure.modules.librarySource.KaLibrarySourceModuleBase
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptLibraryEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptLibraryEntity
 import kotlin.io.path.invariantSeparatorsPathString
 import kotlin.io.path.isDirectory
 

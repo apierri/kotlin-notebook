@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.scripting.resolve.ScriptCompilationConfigurationWrap
 
 /**
  * K2-based plugin abstraction for describing configuration data for the script.
- * This class is heavily used in [org.jetbrains.kotlin.idea.core.script.k2.ScriptConfigurationsSource]
+ * This class is heavily used in [org.jetbrains.kotlin.idea.core.script.ScriptConfigurationsSource]
  *
  * @see [NotebookScriptConfigurationsManager]
  */

@@ -15,7 +15,6 @@ import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.Disposer.newDisposable
-import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.psi.PsiFile
 import com.intellij.testFramework.IdeaTestUtil
 import com.intellij.testFramework.TestDataPath
@@ -28,16 +27,11 @@ import com.intellij.jupyter.testFramework.JupyterCommonRule
 import com.intellij.jupyter.testFramework.configureByJupyterFile
 import org.junit.Rule
 import org.junit.runner.RunWith
-import java.nio.file.FileSystems
 import java.nio.file.Path
 import kotlin.io.path.absolute
 import kotlin.io.path.name
 import kotlin.io.path.pathString
 
-private const val CONTENT_ROOT_VARIABLE: @NonNls String = $$"$CONTENT_ROOT"
-private const val CONTENT_ROOT: @NonNls String = "/plugins/kotlin/jupyter/tests/unitTests"
-private const val PROJECT_ROOT_VARIABLE: @NonNls String = $$"$PROJECT_ROOT"
-private const val PROJECT_ROOT: @NonNls String = ""
 
 // TODO Migrate this class KotlinNotebookTestCase
 @RunWith(KotlinNotebookTestRunner::class)
@@ -53,12 +47,7 @@ abstract class KotlinNotebookBaseTestCase :
     override fun getBasePath(): @NonNls String {
         val testDataPath = this::class.java.getAnnotation(TestDataPath::class.java)?.value
         val testMetadataPath = this::class.java.getAnnotation(TestMetadata::class.java)?.value
-        return FileUtilRt
-            .toSystemIndependentName(
-                listOfNotNull(testDataPath, testMetadataPath).joinToString(FileSystems.getDefault().separator)
-            )
-            .replace(CONTENT_ROOT_VARIABLE, CONTENT_ROOT)
-            .replace(PROJECT_ROOT_VARIABLE, PROJECT_ROOT)
+        return notebookTestBasePath(testDataPath, testMetadataPath)
     }
 
     protected fun getTestFile(): Path {

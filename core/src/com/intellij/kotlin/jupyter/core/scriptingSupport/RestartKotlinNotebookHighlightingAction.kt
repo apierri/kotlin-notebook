@@ -9,7 +9,7 @@ class RestartKotlinNotebookHighlightingAction: DumbAwareAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
 
-        val openFiles = FileEditorManager.getInstance(project).getOpenFiles()
+        val openFiles = FileEditorManager.getInstance(project).openFiles
 
         JupyterCompilerService.getInstance(project)
             .restartHighlighting(openFiles.toList())

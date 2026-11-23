@@ -7,8 +7,8 @@ import com.intellij.platform.backend.workspace.WorkspaceModel
 import com.intellij.platform.workspace.jps.entities.LibraryRoot
 import com.intellij.platform.workspace.storage.MutableEntityStorage
 import com.intellij.platform.workspace.storage.url.VirtualFileUrl
-import org.jetbrains.kotlin.idea.core.script.k2.configurations.toVirtualFileUrl
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptLibraryEntityId
+import org.jetbrains.kotlin.idea.core.script.configurations.toVirtualFileUrl
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptLibraryEntityId
 import java.nio.file.Path
 import kotlin.io.path.pathString
 

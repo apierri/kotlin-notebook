@@ -12,7 +12,7 @@ import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar
 import com.intellij.openapi.startup.ProjectActivity
 import com.intellij.platform.backend.workspace.workspaceModel
 import org.jetbrains.kotlin.idea.compiler.configuration.KotlinCompilerPluginsScriptConfigurationListener
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptLibraryEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptLibraryEntity
 
 class NotebookK2PostStartupActivity : ProjectActivity {
     override suspend fun execute(project: Project) {

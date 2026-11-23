@@ -113,6 +113,7 @@
       <plugin id="org.jetbrains.kotlin"/>
       <plugin id="com.intellij.notebooks.core"/>
       <plugin id="intellij.jupyter"/>
+      <module name="intellij.jupyter.execution"/>
       <module name="intellij.java.backend"/>
     </dependencies>
 

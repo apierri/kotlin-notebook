@@ -7,7 +7,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.OrderRootType
 import com.intellij.openapi.roots.libraries.Library
 import com.intellij.platform.backend.workspace.WorkspaceModel
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptLibraryEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptLibraryEntity
 
 class K2SessionLibrariesFilter : KotlinNotebookSessionLibrariesFilter {
     override fun filterOutNonProjectLibraries(

@@ -34,7 +34,7 @@ import org.junit.Test
  * 2. Kotlin notebooks are converted to HTML without errors
  * 3. Semantic highlighting is applied correctly
  */
-@TestDataPath("/plugins/kotlin/jupyter/tests/unitTests/testData/notebooks/conversion")
+@TestDataPath($$"$CONTENT_ROOT/testData/notebooks/conversion")
 class KotlinNotebookConverterLanguageSupportTest : KotlinNotebookTestCase() {
     @Test
     @TestMetadata("helloWorld.ktnb")

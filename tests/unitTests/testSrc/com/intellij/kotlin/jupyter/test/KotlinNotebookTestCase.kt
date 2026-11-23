@@ -27,7 +27,6 @@ import com.intellij.openapi.projectRoots.Sdk
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.Disposer.newDisposable
-import com.intellij.openapi.util.io.FileUtilRt
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.findPsiFile
 import com.intellij.psi.PsiFile
@@ -60,7 +59,6 @@ import org.junit.Rule
 import org.junit.rules.DisableOnDebug
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
-import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -93,13 +91,6 @@ abstract class KotlinNotebookTestCase :
     // We cannot run on the EDT thread as Kernel Execution also runs there, which can result in deadlocks
     // when waiting for kernel status messages.
     override fun runInDispatchThread(): Boolean = false
-
-    companion object {
-        private const val CONTENT_ROOT_VARIABLE: @NonNls String = $$"$CONTENT_ROOT"
-        private const val CONTENT_ROOT: @NonNls String = "/plugins/kotlin/jupyter/tests/unitTests"
-        private const val PROJECT_ROOT_VARIABLE: @NonNls String = $$"$PROJECT_ROOT"
-        private const val PROJECT_ROOT: @NonNls String = ""
-    }
 
     private var notebookRunner: NotebookTestBuilder? = null
     override lateinit var originalVirtualFile: VirtualFile
@@ -173,12 +164,7 @@ abstract class KotlinNotebookTestCase :
     override fun getBasePath(): @NonNls String {
         val testDataPath = this::class.java.findAnnotationInHierarchy<TestDataPath>()?.value
         val testMetadataPath = this::class.java.findAnnotationInHierarchy<TestMetadata>()?.value
-        return FileUtilRt
-            .toSystemIndependentName(
-                listOfNotNull(testDataPath, testMetadataPath).joinToString(FileSystems.getDefault().separator)
-            )
-            .replace(CONTENT_ROOT_VARIABLE, CONTENT_ROOT)
-            .replace(PROJECT_ROOT_VARIABLE, PROJECT_ROOT)
+        return notebookTestBasePath(testDataPath, testMetadataPath)
     }
 
     /**

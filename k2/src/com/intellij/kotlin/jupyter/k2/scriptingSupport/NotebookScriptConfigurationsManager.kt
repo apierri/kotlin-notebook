@@ -23,11 +23,11 @@ import com.intellij.platform.workspace.storage.EntitySource
 import com.intellij.platform.workspace.storage.MutableEntityStorage
 import com.intellij.platform.workspace.storage.url.VirtualFileUrl
 import org.jetbrains.kotlin.analysis.api.KaImplementationDetail
-import org.jetbrains.kotlin.idea.core.script.k2.configurations.sdkId
-import org.jetbrains.kotlin.idea.core.script.k2.getOrCreateScriptConfigurationId
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptEntity
-import org.jetbrains.kotlin.idea.core.script.k2.modules.KotlinScriptLibraryEntityId
-import org.jetbrains.kotlin.idea.core.script.k2.modules.modifyKotlinScriptLibraryEntity
+import org.jetbrains.kotlin.idea.core.script.configurations.sdkId
+import org.jetbrains.kotlin.idea.core.script.getOrCreateScriptConfigurationId
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptEntity
+import org.jetbrains.kotlin.idea.core.script.modules.KotlinScriptLibraryEntityId
+import org.jetbrains.kotlin.idea.core.script.modules.modifyKotlinScriptLibraryEntity
 import org.jetbrains.kotlin.scripting.resolve.ScriptCompilationConfigurationResult
 import org.jetbrains.kotlin.utils.mapToSetOrEmpty
 import java.io.File
@@ -182,9 +182,11 @@ class NotebookScriptConfigurationsManager(val project: Project) {
         fun copyDependencies(from: KotlinScriptEntity) {
             val deps = from.dependencies.mapNotNull { it.resolve(currentSnapshot) }
             for (lib in deps) {
-                val libId = KotlinScriptLibraryEntityId(lib.classes)
                 addOrUpdateLibraryEntity(
-                    libId, lib.sources, usedInScripts = lib.usedInScripts
+                    lib.scope,
+                    lib.classes,
+                    lib.sources,
+                    usedInScripts = lib.usedInScripts
                 )
             }
         }

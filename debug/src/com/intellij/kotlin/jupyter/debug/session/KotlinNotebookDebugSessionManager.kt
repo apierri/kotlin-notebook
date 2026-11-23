@@ -12,6 +12,7 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.ProjectCloseListener
 import kotlinx.coroutines.CoroutineScope
 import java.nio.file.Path
 
@@ -21,6 +22,14 @@ internal class KotlinNotebookDebugSessionManager(
     coroutineScope: CoroutineScope
 ) : NotebookProjectLevelService<KotlinNotebookFileDebugSession>(project, coroutineScope) {
     private val portsGenerator = DebugConnectionUtility.debugPortsGenerator
+
+    init {
+        project.messageBus.connect(this).subscribe(ProjectCloseListener.TOPIC, object : ProjectCloseListener {
+            override fun projectClosingBeforeSave(project: Project) {
+                mapping.values.forEach { it.disposeCurrentSession() }
+            }
+        })
+    }
 
     private fun nextTargetDebugPortOrNullFor(file: BackedNotebookVirtualFile): Int? {
         // Only separate mode is supported for now

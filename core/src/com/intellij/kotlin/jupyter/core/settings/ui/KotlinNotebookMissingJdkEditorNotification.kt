@@ -22,15 +22,17 @@ class KotlinNotebookMissingJdkEditorNotification : EditorNotificationProvider, D
         if (!file.isKotlinNotebook) return null
         project.service<KotlinNotebookMissingJdkService>() // init service
 
+        val optionsProvider = KotlinNotebookProjectOptionsProvider.getInstance(project)
+        if (optionsProvider.jdk.getPath(project) != null) return null
+        val jdkName = optionsProvider.jdkName
+
         return Function { fileEditor: FileEditor ->
-            createNotificationPanel(project, fileEditor)
+            createNotificationPanel(fileEditor, jdkName)
         }
     }
 
-    private fun createNotificationPanel(project: Project, fileEditor: FileEditor): EditorNotificationPanel? {
+    private fun createNotificationPanel(fileEditor: FileEditor, jdkName: String?): EditorNotificationPanel? {
         if (fileEditor !is JupyterFileEditor) return null
-        val optionsProvider = KotlinNotebookProjectOptionsProvider.getInstance(project)
-        if (optionsProvider.jdk.getPath(project) != null) return null
 
         val panel = EditorNotificationPanel(
             fileEditor.editor,
@@ -39,7 +41,6 @@ class KotlinNotebookMissingJdkEditorNotification : EditorNotificationProvider, D
             EditorNotificationPanel.Status.Error,
         )
 
-        val jdkName = optionsProvider.jdkName
         val message = if (jdkName == null) {
             KotlinNotebookBundle.message("kotlin.jupyter.missing.jdk.notification.not.selected.text")
         } else {
