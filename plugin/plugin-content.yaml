@@ -17,12 +17,6 @@
       - name: $MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlin-jupyter-intellij-compiler-dependencies/0/kotlin-jupyter-intellij-compiler-dependencies-0.jar
       - name: $MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlin-jupyter-kernel-compiler-api/0/kotlin-jupyter-kernel-compiler-api-0.jar
       - name: $MAVEN_REPOSITORY$/com/github/ajalt/clikt/2/clikt-2.jar
-- name: lib/modules/intellij.kotlin.jupyter.debug.jar
-  contentModules:
-  - name: intellij.kotlin.jupyter.debug
-- name: lib/modules/intellij.kotlin.jupyter.debug.renders.jar
-  contentModules:
-  - name: intellij.kotlin.jupyter.debug.renders
 - name: lib/modules/intellij.kotlin.jupyter.export.pdf.jar
   contentModules:
   - name: intellij.kotlin.jupyter.export.pdf
@@ -35,18 +29,12 @@
 - name: lib/modules/intellij.kotlin.jupyter.notekit.jar
   contentModules:
   - name: intellij.kotlin.jupyter.notekit
-- name: lib/modules/intellij.kotlin.jupyter.performancePlugin.jar
-  contentModules:
-  - name: intellij.kotlin.jupyter.performancePlugin
 - name: lib/modules/intellij.kotlin.jupyter.plots.jar
   contentModules:
   - name: intellij.kotlin.jupyter.plots
     libraries:
       jetbrains.lets.plot.kotlin.json:
       - name: $MAVEN_REPOSITORY$/org/jetbrains/lets-plot/lets-plot-kotlin-json/4/lets-plot-kotlin-json-4.jar
-- name: lib/modules/intellij.kotlin.jupyter.sql.jar
-  contentModules:
-  - name: intellij.kotlin.jupyter.sql
 - name: lib/modules/intellij.kotlin.jupyter.tables.jar
   contentModules:
   - name: intellij.kotlin.jupyter.tables

@@ -75,8 +75,6 @@ dependencies {
         plugin(libs.plugins.nonBundledIntellij.jupyter.map { it.toString() })
         plugin(libs.plugins.nonBundledIntellij.notebooksCore.map { it.toString() })
         bundledPlugin("com.intellij.database")
-        bundledPlugin("com.intellij.debugger.collections.visualizer")
-        bundledPlugin("com.jetbrains.performancePlugin")
         bundledPlugin("org.jetbrains.plugins.github")
 
         // Platform module dependency
@@ -88,16 +86,12 @@ dependencies {
         // Content modules
         pluginModule(implementation(projects.core))
         pluginModule(implementation(projects.tables))
-        pluginModule(implementation(projects.sql))
         pluginModule(implementation(projects.plots))
         pluginModule(implementation(projects.export.pdf))
         pluginModule(implementation(projects.buildSystems.gradle))
         pluginModule(implementation(projects.liveTemplates))
         pluginModule(implementation(projects.k2))
-        pluginModule(implementation(projects.debug))
-        pluginModule(implementation(projects.debug.renders))
         pluginModule(implementation(projects.notekit))
-        pluginModule(implementation(projects.performancePlugin))
     }
 }
 

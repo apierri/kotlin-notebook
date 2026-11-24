@@ -66,11 +66,6 @@
 
             <ul>
               <li>
-                <b>Debugger support</b> – a new <i>Debug Cell</i> action lets you start a debugging session directly from a notebook cell.
-                You can step through your project code and library dependencies while using the notebook as an executable entry point.
-              </li>
-
-              <li>
                 <b>Kotlin API for Jupyter Widgets</b> (<code>%use widgets</code>) – a Kotlin-first
                 <a href="https://github.com/Kotlin/kotlin-notebook-integrations/tree/master/integrations/widgets">implementation</a>
                 of the Jupyter Widgets protocol for interactive notebook UI. It supports state synchronization over Jupyter Comms,
@@ -97,15 +92,11 @@
     <content namespace="jetbrains">
         <module name="intellij.kotlin.jupyter.core"/>
         <module name="intellij.kotlin.jupyter.tables"/>
-        <module name="intellij.kotlin.jupyter.sql"/>
         <module name="intellij.kotlin.jupyter.plots"/>
         <module name="intellij.kotlin.jupyter.export.pdf"/>
         <module name="intellij.kotlin.jupyter.buildSystems.gradle"/>
         <module name="intellij.kotlin.jupyter.liveTemplates"/>
         <module name="intellij.kotlin.jupyter.k2"/>
-        <module name="intellij.kotlin.jupyter.debug"/>
-        <module name="intellij.kotlin.jupyter.debug.renders"/>
-        <module name="intellij.kotlin.jupyter.performancePlugin"/>
         <module name="intellij.kotlin.jupyter.notekit"/>
     </content>
 

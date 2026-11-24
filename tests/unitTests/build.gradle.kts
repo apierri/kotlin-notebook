@@ -52,9 +52,7 @@ dependencies {
     testImplementation(projects.export.pdf)
     //testImplementation(projects.k1)
     testImplementation(projects.k2)
-    testImplementation(projects.debug)
     testImplementation(projects.plots)
-    testImplementation(projects.sql)
 
     testImplementation(libs.kotlinx.serialization.core)
     testImplementation(libs.kotlinx.serialization.json)

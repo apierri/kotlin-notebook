@@ -16,7 +16,6 @@ import com.intellij.driver.sdk.ui.should
 import com.intellij.driver.sdk.ui.ui
 import com.intellij.driver.sdk.wait
 import com.intellij.driver.sdk.waitFor
-import com.intellij.driver.tests.kotlin.notebooks.utils.setNotebookDebugFeatures
 import com.intellij.ide.starter.sdk.JdkDownloaderFacade
 import com.intellij.jupyter.ui.test.util.completion.checkCompletionVariantsWithReport
 import com.intellij.jupyter.ui.test.util.kernel.runAllCellsAndWaitExecuted
@@ -62,9 +61,6 @@ abstract class KotlinNotebooksProjectDependenciesTest(
 
   @Test
   fun `execution and restart notifications`() = withDriver {
-    // With the debug sessions enabled, we wouldn't need to restart the kernel
-    setNotebookDebugFeatures(false)
-
     withNotebookEditor {
       pasteToCell(FirstCell, "import com.jonnyzzz.Main\n\nMain.main(emptyArray())")
       runAllCellsAndWaitExecuted()

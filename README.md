@@ -26,7 +26,6 @@ Jupyter dependencies for sandbox runs.
 
 - Syntax highlighting, inlay hints, inspections, find usages, and refactorings in notebook cells
 - Rich output rendering (HTML, images, Swing components, plots)
-- Interactive debugger support for notebook cells
 - Library integrations via `%use` magic and `@file:DependsOn()`
 - Gradle / Maven project integration
 - Tables, DataFrames, and Let's Plot visualisation
@@ -43,18 +42,13 @@ feature area and is packaged as a separate JAR inside the plugin distribution:
 | Module | Description |
 |--------|-------------|
 | `core` | Core notebook editor, REPL connectivity, file-type support |
-| `k1` | K1 (classic frontend) specific analysis |
 | `k2` | K2 (FIR frontend) specific analysis |
-| `debug` | Debugger integration |
-| `debug:renders` | Custom debugger renderers |
 | `plots` | Let's Plot visualisation support |
 | `tables` | DataFrame / table rendering |
-| `sql` | SQL language injection in cells |
 | `export:pdf` | PDF export |
 | `buildSystems:gradle` | Gradle project integration |
 | `liveTemplates` | Kotlin Notebook live templates |
 | `notekit` | Notekit API support |
-| `performancePlugin` | Performance testing commands |
 
 ## Building
 
@@ -69,7 +63,10 @@ feature area and is packaged as a separate JAR inside the plugin distribution:
 ./gradlew buildPlugin
 ```
 
-Gradle writes the installable ZIP to `build/distributions/`.
+Gradle writes the installable ZIP to `build/distributions/`. To use it on another
+computer, copy the ZIP there. In IntelliJ IDEA 2026.3, open **Settings → Plugins**,
+open the gear menu, choose **Install Plugin from Disk**, and select the ZIP.
+Enable the required Jupyter and Notebook Files plugins and restart IDEA if prompted.
 
 ### Run the plugin in a sandboxed IntelliJ IDEA 2026.3 (263)
 

@@ -49,20 +49,14 @@ Content modules live in subdirectories at the repo root:
 
 ```
 core/              Core notebook editor and REPL connectivity
-k1/                K1 (classic frontend) specific analysis
 k2/                K2 (FIR frontend) specific analysis
-debug/             Debugger integration
-debug/renders/     Custom debugger renderers
 plots/             Let's Plot visualisation support
 tables/            DataFrame / table rendering
-sql/               SQL language injection in cells
 export/pdf/        PDF export
 buildSystems/gradle/  Gradle project integration
 liveTemplates/     Kotlin Notebook live templates
 notekit/           Notekit API support
-performancePlugin/ Performance testing commands
 tests/unitTests/   Unit and integration tests
-tests/perfTests/   Performance tests
 ```
 
 ## Code style

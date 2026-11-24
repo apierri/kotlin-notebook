@@ -18,16 +18,11 @@ plugins {
 include(
     ":core",
     ":tables",
-    ":sql",
     ":plots",
     ":export:pdf",
     ":buildSystems:gradle",
     ":liveTemplates",
     ":k2",
-    ":debug",
-    ":debug:renders",
     ":notekit",
-    ":performancePlugin",
     ":tests:unitTests",
-    // ":tests:perfTests",  // Requires JetBrains-internal ide-starter-extended — not publicly available
 )
